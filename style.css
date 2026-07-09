@@ -1,0 +1,42 @@
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+    color: white;
+    text-align: center;
+}
+
+h3 {
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navbar {
+    background-color: rgb(44, 31, 44);
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.navbar a:hover {
+    color:rgb(23, 91, 136)
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
