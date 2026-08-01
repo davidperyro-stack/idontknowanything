@@ -1,27 +1,124 @@
-<html>
-    <head>
-        <style>
-            body{
-                background-image: url("stars.png");
-            }
-        </style>
-        <title>Pery`s website</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        
-        <nav>
-            <div class="navbar">
-                <a href="index.html">Main</a>
-                <a href="about.html">About</a>
-                <a href="projects.html">Projects</a>
-            </div>
-        </nav>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="box">
-            <h1>Welcome to my website!</h1>
-            <h3>First time programming so dont expect my site to be beautiful or working...</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pery personal site</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+
+    <nav>
+        <div class="navbar">
+
+            <a href="index.html" class="logo">
+                > pery
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+            </div>
+
         </div>
-        <img src="blahaj.png" alt="Blahaj">
-    </body>
+
+    </nav>
+
+    <main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="prompt">&gt; whoami</p>
+
+            <h1>Pery</h1>
+
+            <h2>I love computers • Programmer • Chess Player</h2>
+
+            <p class="description">
+                I'm learning programming. This is my first project too!
+                Here I share every project I build.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="projects.html" class="button">
+                    View Projects
+                </a>
+
+                <a href="about.html" class="button secondary">
+                    About Me
+                </a>
+            </div>
+
+            <p class="prompt">&gt; <span class="cursor">█</span></p>
+
+        </div>
+
+        <div class="music-player">
+
+            <p class="prompt">&gt; fav music</p>
+
+            <h3>Sewerslvt - Newlove</h3>
+
+            <audio id="music" loop>
+                <source src="music/background.mp3" type="audio/mpeg">
+            </audio>
+
+            <button id="playButton" class="button">
+                ▶ Play
+            </button>
+
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.5">
+
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+
+const music = document.getElementById("music");
+const button = document.getElementById("playButton");
+const volume = document.getElementById("volume");
+
+music.volume = 0.5;
+
+button.addEventListener("click", () => {
+
+    if (music.paused) {
+        music.play();
+        button.textContent = "⏸ Pause";
+    } else {
+        music.pause();
+        button.textContent = "▶ Play";
+    }
+
+});
+
+volume.addEventListener("input", () => {
+    music.volume = volume.value;
+});
+
+</script>
+
+</body>
+
 </html>
