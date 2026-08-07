@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Photo Album</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <nav>
+
+        <div class="navbar">
+
+            <a href="index.html" class="logo">
+                > pery
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="photo-album.html" class="active">Photo Album</a>
+                <a href="about.html">About</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <main>
+
+        <section class="photo-album-page">
+
+            <p class="prompt">&gt; ls album</p>
+
+            <h1>Photo Album</h1>
+
+            <p class="description">
+                Small photo album with pictures i made. No matter how the picture is, there still a story behind it.
+            </p>
+
+            <div class="photo-grid">
+
+                <div class="photo-card">
+                    <img src="photos/1.jpg" alt="Photo 1">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/2.jpg" alt="Photo 2">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/3.jpg" alt="Photo 3">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/4.jpg" alt="Photo 4">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/5.jpg" alt="Photo 5">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/6.jpg" alt="Photo 6">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/7.jpg" alt="Photo 7">
+                </div>
+
+                <div class="photo-card">
+                    <img src="photos/8.jpg" alt="Photo 8">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <div id="photoModal" class="modal">
+
+        <span class="close">&times;</span>
+
+        <div class="modal-content">
+
+            <img id="modalImage" src="" alt="">
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDescription"></p>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const modal = document.getElementById("photoModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const closeButton = document.querySelector(".close");
+
+        const photos = [
+            {
+                title: "Abandoned factory",
+                description: "One of my favorite places to explore, this abandoned factory has a mysterious charm. with snakes and sometimes stray dogs. Now its highly proctected by security for some reason.."
+            },
+            {
+                title: "Train tracks",
+                description: "A place where i love to go and take pictures. Especially in the winter and its dark. With a flashlight or some light source it gives a horror vibe or something."
+            },
+            {
+                title: "Winter",
+                description: "I tried to take a picture when the road was empty but because of how cold it was that day it kinda ruined."
+            },
+            {
+                title: "Winter 2",
+                description: "Same thing as other picture but different place and my hands was numb and camera lens frozen."
+            },
+            {
+                title: "Summer",
+                description: "A beautiful summer day with lots of sunshine and greenery. This picture i made was accidentaly but somehow ended up looking good. i was just playing around with the camera settings."
+            },
+            {
+                title: "Summer 2",
+                description: "Same was other picture."
+            },
+            {
+                title: "Summer Tree",
+                description: "ALMOST same thing as the other pictures but this one gives me a feeling of childhood."
+            },
+            {
+                title: "Summer Sunset",
+                description: "One of my favorite hours of summer. I love taking pictures of sunsets."
+            }
+        ];
+
+        const images = document.querySelectorAll(".photo-card img");
+
+        images.forEach((image, index) => {
+
+            image.addEventListener("click", () => {
+
+                modal.style.display = "flex";
+
+                modalImage.src = image.src;
+
+                modalTitle.textContent = photos[index].title;
+                modalDescription.textContent = photos[index].description;
+
+            });
+
+        });
+
+        closeButton.onclick = () => {
+            modal.style.display = "none";
+        };
+
+        modal.onclick = (event) => {
+
+            if (event.target === modal) {
+
+                modal.style.display = "none";
+
+            }
+
+        };
+
+    </script>
+
+</body>
+
+</html>
