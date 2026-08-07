@@ -1,17 +1,28 @@
-<html>
-    <head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Pery</title>
+
+    <title>About</title>
 
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 
-    </head>
-    <body>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+
 <nav>
+
     <div class="navbar">
 
         <a href="index.html" class="logo">
@@ -19,72 +30,105 @@
         </a>
 
         <div class="nav-links">
+
             <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
-            <a href="photo-album.html" class="active">Photo Album</a>
-            <a href="about.html">About</a>
+            <a href="photo-album.html">Photo Album</a>
+            <a href="about.html" class="active">About</a>
+
         </div>
 
     </div>
+
 </nav>
 
-        <main>
+<main>
 
-        <section class="about-page">
+<div class="about-grid">
 
-            <p class="prompt">&gt; whoami</p>
+    <div class="panel">
 
-            <h1>About Me</h1>
+        <p class="prompt">&gt; whoami</p>
 
-            <p class="description">
-                Hi! Im Pery,i love going outside, staying in a forest with my friends,making campfire and exploring places in my city. I love to learn more things,especially proggraming.
-            </p>
+        <h1>About Me</h1>
 
-            <p class="prompt">&gt; ls interests</p>
+        <p class="description">
+            Hi! I'm Pery. I love going outside, exploring forests,
+            making campfires with friends, learning programming,
+            and building interesting things.
+        </p>
 
-            <ul class="terminal-list">
-                <li>programming/</li>
-                <li>chess/</li>
-                <li>hardware/</li>
-                <li>Nature/</li>
-            </ul>
-
-            <p class="prompt">&gt; echo $CURRENT_GOAL</p>
-
-            <p class="description">
-                Keep learning, build interesting projects.
-            </p>
-
-            <p class="prompt">&gt; <span class="cursor">█</span></p>
-
-        </section>
-
-        <section class="spotify-section">
-
-    <p class="prompt">&gt; spotify now-playing</p>
-
-    <div id="spotify-widget">
-        Loading...
     </div>
 
-</section>
+    <div class="panel">
+
+        <p class="prompt">&gt; spotify now-playing</p>
+
+        <div id="spotify-widget">
+            Loading Spotify...
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <p class="prompt">&gt; chess stats</p>
+
+        <div id="chess-widget">
+            Loading Chess.com stats...
+        </div>
+
+    </div>
+
+    <div class="panel">
+
+        <p class="prompt">&gt; ls interests</p>
+
+        <ul class="terminal-list">
+
+            <li>programming/</li>
+            <li>chess/</li>
+            <li>hardware/</li>
+            <li>nature/</li>
+
+        </ul>
+
+    </div>
+
+    <div class="panel">
 
         <p class="prompt">&gt; quote</p>
 
-<div class="quote-box">
+        <div class="quote-box">
 
-    <p class="quote">
-        "If we wait until we're ready, we'll be waiting for the rest of our lives."
-    </p>
+            <p class="quote">
+                "If we wait until we're ready, we'll be waiting for the rest of our lives."
+            </p>
 
-    <p class="quote-author">
-        - Lemony Snicket
-    </p>
+            <p class="quote-author">
+                — Lemony Snicket
+            </p>
 
+        </div>
 
-    </main>
+    </div>
 
-    <script>
+    <div class="panel full">
+
+        <p class="prompt">&gt; echo $CURRENT_GOAL</p>
+
+        <p class="description">
+            Keep learning, build interesting projects.
+        </p>
+
+    </div>
+
+</div>
+
+</main>
+
+<script>
+
 async function loadSpotify() {
 
     const widget = document.getElementById("spotify-widget");
@@ -101,6 +145,7 @@ async function loadSpotify() {
             `;
 
             return;
+
         }
 
         widget.innerHTML = `
@@ -126,15 +171,42 @@ async function loadSpotify() {
     } catch {
 
         widget.innerHTML = "Couldn't load Spotify.";
+
     }
 
 }
 
 loadSpotify();
-
 setInterval(loadSpotify, 30000);
+
+async function loadChess() {
+
+    const widget = document.getElementById("chess-widget");
+
+    try {
+
+        const res = await fetch("/api/chess");
+        const data = await res.json();
+
+        widget.innerHTML = `
+            <p><strong>Username:</strong> davidPeryRO</p>
+            <p><strong>Rapid:</strong> ${data.rapid}</p>
+            <p><strong>Blitz:</strong> ${data.blitz}</p>
+            <p><strong>Bullet:</strong> ${data.bullet}</p>
+        `;
+
+    } catch {
+
+        widget.innerHTML = "Couldn't load Chess.com.";
+
+    }
+
+}
+
+loadChess();
+
 </script>
 
-    </body>
+</body>
 
 </html>
