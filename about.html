@@ -59,6 +59,16 @@
 
         </section>
 
+        <section class="spotify-section">
+
+    <p class="prompt">&gt; spotify now-playing</p>
+
+    <div id="spotify-widget">
+        Loading...
+    </div>
+
+</section>
+
         <p class="prompt">&gt; quote</p>
 
 <div class="quote-box">
@@ -73,6 +83,57 @@
 
 
     </main>
+
+    <script>
+async function loadSpotify() {
+
+    const widget = document.getElementById("spotify-widget");
+
+    try {
+
+        const res = await fetch("/api/spotify");
+        const data = await res.json();
+
+        if (!data.isPlaying) {
+
+            widget.innerHTML = `
+                <p>🎵 Nothing is currently playing.</p>
+            `;
+
+            return;
+        }
+
+        widget.innerHTML = `
+            <div class="spotify-card">
+
+                <img src="${data.albumImage}" alt="Album cover">
+
+                <div class="spotify-info">
+
+                    <h3>${data.title}</h3>
+
+                    <p>${data.artist}</p>
+
+                    <a href="${data.songUrl}" target="_blank">
+                        Open in Spotify
+                    </a>
+
+                </div>
+
+            </div>
+        `;
+
+    } catch {
+
+        widget.innerHTML = "Couldn't load Spotify.";
+    }
+
+}
+
+loadSpotify();
+
+setInterval(loadSpotify, 30000);
+</script>
 
     </body>
 
