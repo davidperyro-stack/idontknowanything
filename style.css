@@ -317,3 +317,43 @@ html {
 .quote-box p{
     font-style: italic;
 }
+
+.spotify-section {
+    margin-top: 50px;
+}
+
+.spotify-card{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    background:#171b22;
+    border:1px solid #2b3342;
+    border-radius:12px;
+    padding:20px;
+    margin-top:15px;
+}
+
+.spotify-card img{
+    width:90px;
+    height:90px;
+    border-radius:10px;
+}
+
+.spotify-info h3{
+    margin:0;
+    color:#fff;
+}
+
+.spotify-info p{
+    margin:8px 0;
+    color:#b8c0cc;
+}
+
+.spotify-info a{
+    color:#3b82f6;
+    text-decoration:none;
+}
+
+.spotify-info a:hover{
+    text-decoration:underline;
+}
