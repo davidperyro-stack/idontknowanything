@@ -68,14 +68,13 @@
             Loading Spotify...
         </div>
 
-    </div>
+        <div class="panel">
 
-    <div class="panel">
+            <p class="prompt">&gt; steam status</p>
 
-        <p class="prompt">&gt; chess stats</p>
-
-        <div id="chess-widget">
-            Loading Chess.com stats...
+            <div id="steam-widget">
+                Loading Steam...
+            </div>
         </div>
 
     </div>
@@ -179,31 +178,57 @@ async function loadSpotify() {
 loadSpotify();
 setInterval(loadSpotify, 30000);
 
-async function loadChess() {
+async function loadSteam() {
 
-    const widget = document.getElementById("chess-widget");
+    const widget = document.getElementById("steam-widget");
 
     try {
 
-        const res = await fetch("/api/chess");
+        const res = await fetch("/api/steam");
         const data = await res.json();
 
+        const states = [
+            "Offline",
+            "Online",
+            "Busy",
+            "Away",
+            "Snooze",
+            "Looking to trade",
+            "Looking to play"
+        ];
+
         widget.innerHTML = `
-            <p><strong>Username:</strong> davidPeryRO</p>
-            <p><strong>Rapid:</strong> ${data.rapid}</p>
-            <p><strong>Blitz:</strong> ${data.blitz}</p>
-            <p><strong>Bullet:</strong> ${data.bullet}</p>
+            <div class="spotify-card">
+
+                <img src="${data.avatar}" alt="Steam Avatar">
+
+                <div class="spotify-info">
+
+                    <h3>${data.name}</h3>
+
+                    <p>Status: ${states[data.status]}</p>
+
+                    <p>${data.game ? `🎮 ${data.game}` : "Not playing anything"}</p>
+
+                    <a href="${data.profile}" target="_blank">
+                        View Steam Profile
+                    </a>
+
+                </div>
+
+            </div>
         `;
 
     } catch {
 
-        widget.innerHTML = "Couldn't load Chess.com.";
+        widget.innerHTML = "Couldn't load Steam.";
 
     }
 
 }
 
-loadChess();
+loadSteam();
+setInterval(loadSteam, 30000);
 
 </script>
 
