@@ -5,182 +5,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Photo Album</title>
+    <title>Pery personal site</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
 
-    <nav>
+<nav>
+    <div class="navbar">
 
-        <div class="navbar">
+        <a href="index.html" class="logo">
+            > pery
+        </a>
 
-            <a href="index.html" class="logo">
-                > pery
-            </a>
-
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
-                <a href="photo-album.html" class="active">Photo Album</a>
-                <a href="about.html">About</a>
-            </div>
-
-        </div>
-
-    </nav>
-
-    <main>
-
-        <section class="photo-album-page">
-
-            <p class="prompt">&gt; ls album</p>
-
-            <h1>Photo Album</h1>
-
-            <p class="description">
-                Small photo album with pictures i made. No matter how the picture is, there still a story behind it.
-            </p>
-
-            <div class="photo-grid">
-
-                <div class="photo-card">
-                    <img src="photos/1.jpg" alt="Photo 1">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/2.jpg" alt="Photo 2">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/3.jpg" alt="Photo 3">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/4.jpg" alt="Photo 4">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/5.jpg" alt="Photo 5">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/6.jpg" alt="Photo 6">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/7.jpg" alt="Photo 7">
-                </div>
-
-                <div class="photo-card">
-                    <img src="photos/8.jpg" alt="Photo 8">
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <div id="photoModal" class="modal">
-
-        <span class="close">&times;</span>
-
-        <div class="modal-content">
-
-            <img id="modalImage" src="" alt="">
-
-            <h2 id="modalTitle"></h2>
-
-            <p id="modalDescription"></p>
-
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="photo-album.html">Photo Album</a>
+            <a href="about.html">About</a>
         </div>
 
     </div>
+</nav>
 
-    <script>
+    <main>
 
-        const modal = document.getElementById("photoModal");
-        const modalImage = document.getElementById("modalImage");
-        const modalTitle = document.getElementById("modalTitle");
-        const modalDescription = document.getElementById("modalDescription");
-        const closeButton = document.querySelector(".close");
+    <section class="hero">
 
-        const photos = [
-            {
-                title: "Abandoned factory",
-                description: "One of my favorite places to explore, this abandoned factory has a mysterious charm. with snakes and sometimes stray dogs. Now its highly proctected by security for some reason.."
-            },
-            {
-                title: "Train tracks",
-                description: "A place where i love to go and take pictures. Especially in the winter and its dark. With a flashlight or some light source it gives a horror vibe or something."
-            },
-            {
-                title: "Winter",
-                description: "I tried to take a picture when the road was empty but because of how cold it was that day it kinda ruined."
-            },
-            {
-                title: "Winter 2",
-                description: "Same thing as other picture but different place and my hands was numb and camera lens frozen."
-            },
-            {
-                title: "Summer",
-                description: "A beautiful summer day with lots of sunshine and greenery. This picture i made was accidentaly but somehow ended up looking good. i was just playing around with the camera settings."
-            },
-            {
-                title: "Summer 2",
-                description: "Same was other picture."
-            },
-            {
-                title: "Summer Tree",
-                description: "ALMOST same thing as the other pictures but this one gives me a feeling of childhood."
-            },
-            {
-                title: "Summer Sunset",
-                description: "One of my favorite hours of summer. I love taking pictures of sunsets."
-            }
-        ];
+        <div class="hero-content">
 
-        const images = document.querySelectorAll(".photo-card img");
+            <p class="prompt">&gt; whoami</p>
 
-        images.forEach((image, index) => {
+            <h1>Pery</h1>
 
-            image.addEventListener("click", () => {
+            <h2>I love computers • Programmer • Chess Player</h2>
 
-                modal.style.display = "flex";
+            <p class="description">
+                I'm learning programming. This is my first project too!
+                Here I share every project I build.
+            </p>
 
-                modalImage.src = image.src;
+            <div class="hero-buttons">
+                <a href="projects.html" class="button">
+                    View Projects
+                </a>
 
-                modalTitle.textContent = photos[index].title;
-                modalDescription.textContent = photos[index].description;
+                <a href="about.html" class="button secondary">
+                    About Me
+                </a>
+            </div>
 
-            });
+            <p class="prompt">&gt; <span class="cursor">█</span></p>
 
-        });
+        </div>
 
-        closeButton.onclick = () => {
-            modal.style.display = "none";
-        };
+        <div class="music-player">
 
-        modal.onclick = (event) => {
+            <p class="prompt">&gt; fav music</p>
 
-            if (event.target === modal) {
+            <h3>Sewerslvt - Newlove</h3>
 
-                modal.style.display = "none";
+            <audio id="music" loop>
+                <source src="music/background.mp3" type="audio/mpeg">
+            </audio>
 
-            }
+            <button id="playButton" class="button">
+                ▶ Play
+            </button>
 
-        };
+            <input
+                type="range"
+                id="volume"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.5">
 
-    </script>
+        </div>
+
+    </section>
+
+</main>
+
+<script>
+
+const music = document.getElementById("music");
+const button = document.getElementById("playButton");
+const volume = document.getElementById("volume");
+
+music.volume = 0.5;
+
+button.addEventListener("click", () => {
+
+    if (music.paused) {
+        music.play();
+        button.textContent = "⏸ Pause";
+    } else {
+        music.pause();
+        button.textContent = "▶ Play";
+    }
+
+});
+
+volume.addEventListener("input", () => {
+    music.volume = volume.value;
+});
+
+</script>
 
 </body>
 
