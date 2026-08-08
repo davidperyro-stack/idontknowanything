@@ -15,7 +15,7 @@ This website is where I showcase the projects Ive built while learning programmi
 
 - HTML
 - CSS
-- JavaScript (inside HTML)
+- JavaScript
 
 ## Projects
 
