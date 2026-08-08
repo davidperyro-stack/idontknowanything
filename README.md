@@ -33,16 +33,12 @@ https://davidperyro-stack.github.io/idontknowanything/
 
 ## AI Usage
 
-I used GitHub Copilot for code completion and ChatGPT to learn concepts, improve the design, and solve problems when I got stuck. The website was coded and customized by me while learning.
+I used GitHub Copilot for code completion and ChatGPT to improve design and help me setup the API for steam and spotify and creating the photo album
 
 ## Future Plans
 
 - Add more projects
-- Improve animations
-- Better mobile support
 - Keep learning JavaScript
-- Add photo album with small stories inside them when you click them
-
 ---
 
 Thanks for visiting! :)
