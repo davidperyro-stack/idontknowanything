@@ -2,22 +2,27 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Pery personal site</title>
+    <title>About</title>
 
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 
 <body>
 
 <nav>
+
     <div class="navbar">
 
         <a href="index.html" class="logo">
@@ -25,97 +30,203 @@
         </a>
 
         <div class="nav-links">
-            <a href="index.html" class="active">Home</a>
+
+            <a href="index.html">Home</a>
             <a href="projects.html">Projects</a>
             <a href="photo-album.html">Photo Album</a>
-            <a href="about.html">About</a>
+            <a href="about.html" class="active">About</a>
         </div>
 
     </div>
+
 </nav>
 
-    <main>
+<main>
 
-    <section class="hero">
+<div class="about-grid">
 
-        <div class="hero-content">
+    <div class="panel">
 
-            <p class="prompt">&gt; whoami</p>
+        <p class="prompt">&gt; whoami</p>
 
-            <h1>Pery</h1>
+        <h1>About Me</h1>
 
-            <h2>I love computers • Programmer • Chess Player</h2>
+        <p class="description">
+            Hi! I'm Pery. I love going outside, exploring forests,
+            making campfires with friends, learning programming,
+            and building interesting things.
+        </p>
 
-            <p class="description">
-                I'm learning programming. This is my first project too!
-                Here I share every project I build.
+    </div>
+
+    <div class="panel">
+
+    <p class="prompt">&gt; live_status</p>
+
+    <div class="live-grid">
+
+        <div id="spotify-widget">
+            Loading Spotify...
+        </div>
+
+        <div id="steam-widget">
+            Loading Steam...
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="panel">
+
+        <p class="prompt">&gt; ls interests</p>
+
+        <ul class="terminal-list">
+
+            <li>programming/</li>
+            <li>chess/</li>
+            <li>hardware/</li>
+            <li>nature/</li>
+
+        </ul>
+
+    </div>
+
+    <div class="panel">
+
+        <p class="prompt">&gt; quote</p>
+
+        <div class="quote-box">
+
+            <p class="quote">
+                "If we wait until we're ready, we'll be waiting for the rest of our lives."
             </p>
 
-            <div class="hero-buttons">
-                <a href="projects.html" class="button">
-                    View Projects
-                </a>
-
-                <a href="about.html" class="button secondary">
-                    About Me
-                </a>
-            </div>
-
-            <p class="prompt">&gt; <span class="cursor">█</span></p>
+            <p class="quote-author">
+                — Lemony Snicket
+            </p>
 
         </div>
 
-        <div class="music-player">
+    </div>
 
-            <p class="prompt">&gt; fav music</p>
+    <div class="panel full">
 
-            <h3>Sewerslvt - Newlove</h3>
+        <p class="prompt">&gt; echo $CURRENT_GOAL</p>
 
-            <audio id="music" loop>
-                <source src="music/background.mp3" type="audio/mpeg">
-            </audio>
+        <p class="description">
+            Keep learning, build interesting projects.
+        </p>
 
-            <button id="playButton" class="button">
-                ▶ Play
-            </button>
+    </div>
 
-            <input
-                type="range"
-                id="volume"
-                min="0"
-                max="1"
-                step="0.01"
-                value="0.5">
-
-        </div>
-
-    </section>
+</div>
 
 </main>
 
 <script>
 
-const music = document.getElementById("music");
-const button = document.getElementById("playButton");
-const volume = document.getElementById("volume");
+async function loadSpotify() {
 
-music.volume = 0.5;
+    const widget = document.getElementById("spotify-widget");
 
-button.addEventListener("click", () => {
+    try {
 
-    if (music.paused) {
-        music.play();
-        button.textContent = "⏸ Pause";
-    } else {
-        music.pause();
-        button.textContent = "▶ Play";
+        const res = await fetch("/api/spotify");
+        const data = await res.json();
+
+        if (!data.isPlaying) {
+
+            widget.innerHTML = `
+                <p>🎵 Nothing is currently playing.</p>
+            `;
+
+            return;
+
+        }
+
+        widget.innerHTML = `
+            <div class="spotify-card">
+
+                <img src="${data.albumImage}" alt="Album cover">
+
+                <div class="spotify-info">
+
+                    <h3>${data.title}</h3>
+
+                    <p>${data.artist}</p>
+
+                    <a href="${data.songUrl}" target="_blank">
+                        Open in Spotify
+                    </a>
+
+                </div>
+
+            </div>
+        `;
+
+    } catch {
+
+        widget.innerHTML = "Couldn't load Spotify.";
+
     }
 
-});
+}
 
-volume.addEventListener("input", () => {
-    music.volume = volume.value;
-});
+loadSpotify();
+setInterval(loadSpotify, 30000);
+
+async function loadSteam() {
+
+    const widget = document.getElementById("steam-widget");
+
+    try {
+
+        const res = await fetch("/api/steam");
+        const data = await res.json();
+
+        const states = [
+            "Offline",
+            "Online",
+            "Busy",
+            "Away",
+            "Snooze",
+            "Looking to trade",
+            "Looking to play"
+        ];
+
+        widget.innerHTML = `
+            <div class="spotify-card">
+
+                <img src="${data.avatar}" alt="Steam Avatar">
+
+                <div class="spotify-info">
+
+                    <h3>${data.name}</h3>
+
+                    <p>Status: ${states[data.status]}</p>
+
+                    <p>${data.game ? `🎮 ${data.game}` : "Not playing anything"}</p>
+
+                    <a href="${data.profile}" target="_blank">
+                        View Steam Profile
+                    </a>
+
+                </div>
+
+            </div>
+        `;
+
+    } catch {
+
+        widget.innerHTML = "Couldn't load Steam.";
+
+    }
+
+}
+
+loadSteam();
+setInterval(loadSteam, 30000);
 
 </script>
 
