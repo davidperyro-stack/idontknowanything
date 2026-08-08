@@ -29,7 +29,7 @@ You can find projects such as:
 
 ## Live Website
 
-https://davidperyro-stack.github.io/idontknowanything/
+https://idontknowanything.vercel.app/
 
 ## AI Usage
 
