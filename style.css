@@ -437,3 +437,67 @@ html {
 }
 
 }
+
+.local-status {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 0 40px 60px;
+}
+
+.status-card {
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 25px;
+    background: #161b22;
+    transition: all 0.2s ease;
+}
+
+.status-card:hover {
+    border-color: #58a6ff;
+    transform: translateY(-3px);
+}
+
+.status-card .prompt {
+    margin-top: 0;
+}
+
+#local-clock {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px 0 5px;
+}
+
+#weather-info {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 15px 0 5px;
+}
+
+.status-card > p:last-child {
+    color: #8b949e;
+    margin-top: 5px;
+}
+
+@media (max-width: 700px) {
+
+    .local-status {
+        grid-template-columns: 1fr;
+        padding: 0 20px 40px;
+    }
+
+}
+
+.weather-description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #c9d1d9;
+    margin-top: 5px;
+}
+
+.weather-wind {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #8b949e;
+    margin-top: 8px;
+}
