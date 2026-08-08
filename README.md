@@ -7,10 +7,9 @@ This website is where I showcase the projects Ive built while learning programmi
 ## Features
 
 - Clean programmer-inspired design
-- Home, About and Projects pages
+- Home, About, Projects and a Photo album pages
 - Music player on the homepage
-- Responsive design (coming soon)
-- Hosted with GitHub Pages
+- Hosted with Vercel
 
 ## Tech Stack
 
