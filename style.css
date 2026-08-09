@@ -19,6 +19,10 @@ a{
 nav {
     padding: 25px 50px;
     border-bottom: 1px solid #21262d;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar {
@@ -441,16 +445,16 @@ html {
 .local-status {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    padding: 0 40px 60px;
+    gap: 20px;
+    margin-top: -70px;
+    margin-bottom: 40px;
 }
 
 .status-card {
+    background: #161b22;
     border: 1px solid #30363d;
     border-radius: 12px;
-    padding: 25px;
-    background: #161b22;
-    transition: all 0.2s ease;
+    padding: 20px;
 }
 
 .status-card:hover {
@@ -500,4 +504,91 @@ html {
     font-weight: 400;
     color: #8b949e;
     margin-top: 8px;
+}
+
+.weather-temperature {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.weather-description {
+    font-size: 1rem;
+    color: #c9d1d9;
+    margin-bottom: 15px;
+}
+
+.weather-details {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #8b949e
+}
+
+.sun-times {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #30363d;
+    font-size: 0.85rem;
+    color: #c9d1d9
+}
+
+.local-date {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #8b949e;
+    margin-top: 5px
+}
+
+.random-site {
+    margin-top: 20px;
+}
+
+.random-site .button {
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+#randomSiteText {
+    margin-top: 12px;
+    color: #8b949e;
+    font-size: 0.85rem;
+}
+
+.chess-profile {
+    margin-top: 30px;
+}
+
+.chess-profile h2 {
+    margin-bottom: 25px;
+}
+
+.chess-ratings {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.chess-ratings .panel {
+    min-height: 150px;
+}
+
+.chess-ratings .panel div {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 20px;
+}
+
+.chess-profile .button {
+    display: inline-block;
+}
+
+@media (max-width: 700px) {
+
+    .chess-ratings {
+        grid-template-columns: 1fr;
+    }
+
 }
