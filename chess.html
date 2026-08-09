@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chess - Pery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+</head>
+
+<body>
+
+<nav>
+
+    <div class="navbar">
+
+        <a href="index.html" class="logo">
+            &gt; pery
+        </a>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+
+            <a href="projects.html">Projects</a>
+
+            <a href="photo-album.html">Photo Album</a>
+
+            <a href="about.html">About</a>
+
+            <a href="chess.html" class="active">Chess</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+<section class="project-page">
+
+    <p class="prompt">&gt; chess</p>
+
+    <h1>Chess</h1>
+
+    <p class="description">
+        My Chess.com profile, ratings and games.
+    </p>
+
+
+    <div class="chess-profile panel">
+
+        <p class="prompt">&gt; player</p>
+
+        <h2>davidPeryRO</h2>
+
+        <a
+            href="https://www.chess.com/member/davidPeryRO"
+            target="_blank"
+            class="button">
+            View Chess.com Profile
+        </a>
+
+    </div>
+
+
+    <div class="chess-ratings">
+
+        <div class="panel">
+
+            <p class="prompt">&gt; rapid</p>
+
+            <div id="rapid-rating">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <p class="prompt">&gt; blitz</p>
+
+            <div id="blitz-rating">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <div class="panel">
+
+            <p class="prompt">&gt; bullet</p>
+
+            <div id="bullet-rating">
+                Loading...
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="panel">
+
+        <p class="prompt">&gt; status</p>
+
+        <div id="chess-status">
+            Loading Chess.com data...
+        </div>
+
+    </div>
+
+
+    <p class="prompt">
+        &gt; <span class="cursor">█</span>
+    </p>
+
+</section>
+
+</main>
+
+
+<script>
+
+async function loadChess() {
+
+    try {
+
+        const res = await fetch("/api/chess");
+
+        const data = await res.json();
+
+
+        document.getElementById("rapid-rating").textContent =
+            data.rapid ?? "N/A";
+
+        document.getElementById("blitz-rating").textContent =
+            data.blitz ?? "N/A";
+
+        document.getElementById("bullet-rating").textContent =
+            data.bullet ?? "N/A";
+
+
+        document.getElementById("chess-status").textContent =
+            "Chess.com profile loaded.";
+
+    } catch (error) {
+
+        document.getElementById("chess-status").textContent =
+            "Couldn't load Chess.com.";
+
+    }
+
+}
+
+loadChess();
+
+</script>
+
+</body>
+
+</html>
