@@ -89,7 +89,13 @@
 
         </div>
 
+          <div class="status-card">
+            <p class="prompt">&gt; site stats</p>
+            <div id="site-stats">Loading...</div>
+        </div>
+
     </section>
+
 
 </main>
 
@@ -275,7 +281,45 @@ document.getElementById("randomSiteButton").addEventListener("click", () => {
 
 });
 
+const SITE_LAUNCH_DATE = "2026-06-07";
+
+async function loadSiteStats() {
+
+    const statsEl = document.getElementById("site-stats");
+
+    const launch = new Date(SITE_LAUNCH_DATE);
+    const now = new Date();
+    const uptimeDays = Math.floor((now - launch) / (1000 * 60 * 60 * 24));
+
+    let visits = "N/A";
+
+    try {
+
+        const res = await fetch(
+            "https://abacus.jasoncameron.dev/hit/davidperyro-stack/personal-site"
+        );
+
+        const data = await res.json();
+        visits = data.value;
+
+    } catch (error) {
+
+    }
+
+    statsEl.innerHTML = `
+        <div class="weather-temperature">${uptimeDays} days</div>
+        <div class="weather-details">
+             Site uptime<br>
+            👁 ${visits} visits
+        </div>
+    `;
+
+}
+
+loadSiteStats();
+
 </script>
+
 
 </body>
 
