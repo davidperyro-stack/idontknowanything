@@ -1,0 +1,151 @@
+body {
+    background-color: #120b0a;
+    color: #f4e8da;
+}
+
+::selection {
+    background: #ff7518;
+    color: #120b0a;
+}
+
+nav {
+    border-bottom-color: #3b2418;
+}
+
+.navbar a {
+    color: #b89a82;
+}
+
+.navbar a:hover {
+    color: #ff7518;
+}
+
+.logo {
+    color: #f4e8da !important;
+}
+
+.active {
+    color: #ff7518 !important;
+}
+
+.prompt {
+    color: #ff7518;
+}
+
+.hero h2,
+#modalDescription,
+#randomSiteText,
+.quote-author,
+.weather-wind,
+.weather-details,
+.local-date {
+    color: #b89a82;
+}
+
+.description,
+.terminal-list li,
+.quote,
+.weather-description,
+.sun-times {
+    color: #f4e8da;
+}
+
+.button {
+    border-color: #ff7518;
+    color: #ff7518;
+}
+
+.button:hover {
+    background-color: #ff7518;
+    color: #120b0a;
+}
+
+.secondary {
+    border-color: #3b2418;
+    color: #f4e8da;
+}
+
+.secondary:hover {
+    background-color: #3b2418;
+    color: #ffffff;
+}
+
+.panel,
+.status-card,
+.modal-content {
+    background : #1c1210;
+    border-color: #3b2418;
+}
+
+.project-card,
+.photo-card,
+.music-player {
+    border-color: #3b2418;
+}
+
+.tech-stack span {
+    border-color: #3b2418;
+    color: #b89a82;
+}
+
+.sun-times {
+    border-top-color: #3b2418;
+}
+
+.spotify-card {
+    background: #1c1210;
+    border-color: #3b2418;
+}
+
+.spotify-info h3 {
+    color: #f4e8da;
+}
+
+.spotify-info p {
+    color: #b89a82;
+}
+
+.spotify-info a {
+    color: #ff7518;
+}
+
+.project-card:hover,
+.photo-card:hover,
+.status-card:hover {
+    border-color: #3b0f0f;
+    box-shadow: 0 0 18px rgba(87, 24, 24, 0.35);
+}
+
+.leaf {
+    position: fixed;
+    top: -50px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+
+logo::after {
+    content: "🎃";
+}
+
+.pumpkin {
+    position: fixed;
+    bottom: 10px;
+    z-index: 10;
+    font-size: 40px;
+    pointer-events: none;
+}
+
+.pumpkin.left {
+    left: 15px;
+}
+
+.pumpkin.right {
+    right: 15px;
+}
