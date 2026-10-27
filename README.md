@@ -28,7 +28,7 @@ You can find projects such as:
 
 ## Live Website
 
-https://idontknowanything.vercel.app/
+https://www.pery.tech
 
 ## AI Usage
 
@@ -36,8 +36,7 @@ I used GitHub Copilot for code completion and ChatGPT to improve design and help
 
 ## Future Plans
 
-- Add more projects
-- Keep learning JavaScript
----
+- add a halloween theme
+- add a chritsmas theme
 
 Thanks for visiting! :)
