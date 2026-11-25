@@ -10,10 +10,13 @@ export default async function handler(req, res) {
                 {
                     headers: {
                         apikey: process.env.SUPABASE_PUBLISHABLE_KEY,
-                        Authorization: `Bearer ${process.env.SUPABASE_PUBLISHABLE_KEY}`,
                     },
                 }
             );
+
+            if (!response.ok) {
+                throw new Error("Could not load messages.");
+            }
 
             const messages = await response.json();
 
@@ -43,15 +46,15 @@ export default async function handler(req, res) {
             const cleanName = name.trim();
             const cleanMessage = message.trim();
 
-            if (cleanName.length > 30 || cleanMessage.length > 300) {
-                return res.status(400).json({
-                    error: "im not reading allat :skull:",
-                });
-            }
-
             if (!cleanName || !cleanMessage) {
                 return res.status(400).json({
                     error: "i dont want oxygen messages.",
+                });
+            }
+
+            if (cleanName.length > 30 || cleanMessage.length > 300) {
+                return res.status(400).json({
+                    error: "im not reading allat :skull:",
                 });
             }
 
@@ -61,7 +64,6 @@ export default async function handler(req, res) {
                     method: "POST",
                     headers: {
                         apikey: process.env.SUPABASE_PUBLISHABLE_KEY,
-                        Authorization: `Bearer ${process.env.SUPABASE_PUBLISHABLE_KEY}`,
                         "Content-Type": "application/json",
                         Prefer: "return=representation",
                     },
@@ -79,8 +81,6 @@ export default async function handler(req, res) {
                     error: "Could not submit your message.",
                 });
             }
-
-            console.error(response.status, JSON.stringify(result));
 
             return res.status(201).json(result);
 
