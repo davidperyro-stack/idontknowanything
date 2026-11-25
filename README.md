@@ -9,7 +9,8 @@ This website is where I showcase the projects Ive built while learning programmi
 - Clean programmer-inspired design
 - Home, About, Projects and a Photo album pages
 - Music player on the homepage
-- Hosted with Vercel
+- Hosted with Vercel and supabase!
+- Guestbook, sign it!
 
 ## Tech Stack
 
