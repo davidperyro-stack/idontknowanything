@@ -2,6 +2,44 @@
 const nameInput = document.getElementById("visitor-name");
 const messageInput = document.getElementById("visitor-message");
 const submitButton = document.getElementById("guest-message");
+const messagesContainer = document.getElementById("messages");
+
+async function loadMessages() {
+
+    try {
+
+        const response = await fetch("/api/guestbook");
+        const messages = await response.json();
+
+        if (!response.ok) {
+            throw new Error(messages.error || "Could not load messages.");
+        }
+
+        messagesContainer.innerHTML = "<h2>Recent Messages</h2>";
+
+        messages.forEach(function(message) {
+
+            const messageBox = document.createElement("div");
+            const name = document.createElement("h3");
+            const text = document.createElement("p");
+
+            name.textContent = message.name;
+            text.textContent = message.message;
+
+            messageBox.appendChild(name);
+            messageBox.appendChild(text);
+
+            messagesContainer.appendChild(messageBox);
+
+        });
+
+    } catch (error) {
+
+        console.error("Guestbook loading error:", error);
+
+    }
+
+}
 
 submitButton.addEventListener("click", async function() {
 
@@ -52,3 +90,5 @@ submitButton.addEventListener("click", async function() {
     submitButton.textContent = "Sign guestbook!";
 
 });
+
+loadMessages();
