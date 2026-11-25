@@ -14,18 +14,20 @@ export default async function handler(req, res) {
                 }
             );
 
+            const result = await response.json();
+
             if (!response.ok) {
-                throw new Error("Could not load messages.");
+                return res.status(response.status).json({
+                    error: result.message || "Could not load messages.",
+                });
             }
 
-            const messages = await response.json();
-
-            return res.status(200).json(messages);
+            return res.status(200).json(result);
 
         } catch (error) {
 
             return res.status(500).json({
-                error: "Could not load messages.",
+                error: error.message || "Something went wrong while loading messages.",
             });
 
         }
@@ -39,7 +41,7 @@ export default async function handler(req, res) {
 
             if (!name || !message) {
                 return res.status(400).json({
-                    error: "FILL BOTH FIELDS. NOW.",
+                    error: "Please fill in both fields.",
                 });
             }
 
@@ -48,13 +50,13 @@ export default async function handler(req, res) {
 
             if (!cleanName || !cleanMessage) {
                 return res.status(400).json({
-                    error: "i dont want oxygen messages.",
+                    error: "Both fields must contain text.",
                 });
             }
 
             if (cleanName.length > 30 || cleanMessage.length > 300) {
                 return res.status(400).json({
-                    error: "im not reading allat :skull:",
+                    error: "Name must be under 30 characters and message under 300.",
                 });
             }
 
@@ -74,24 +76,26 @@ export default async function handler(req, res) {
                 }
             );
 
+            const result = await response.json();
+
             if (!response.ok) {
-    return res.status(response.status).json({
-        error: result.message || "Unknown Supabase error.",
-    });
-}
+                return res.status(response.status).json({
+                    error: result.message || "Unknown Supabase error.",
+                });
+            }
 
             return res.status(201).json(result);
 
         } catch (error) {
 
             return res.status(500).json({
-                error: "Something went wrong. maybe you destroyed my code, maybe im just stupid idk",
+                error: error.message || "Something went wrong while submitting your message.",
             });
 
         }
     }
 
     return res.status(405).json({
-        error: "Method not allowed. lol",
+        error: "Method not allowed.",
     });
 }
