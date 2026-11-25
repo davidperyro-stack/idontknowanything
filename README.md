@@ -33,11 +33,10 @@ https://www.pery.tech
 
 ## AI Usage
 
-I used GitHub Copilot for code completion and ChatGPT to improve design and help me setup the API for steam and spotify and creating the photo album
+I used GitHub Copilot for code completion and ChatGPT to improve design and help me setup the API for steam and spotify and guesbook and creating the photo album
+fixing a bug that it didnt connect to supabase (STUPID API KEYS)
 
 ## Future Plans
-
-- add a halloween theme
 - add a chritsmas theme
 
 Thanks for visiting! :)
