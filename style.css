@@ -596,3 +596,85 @@ html {
 .fide-card {
     margin-top: 20px;
 }
+
+.guestbook {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+.guestbook h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.guestbook p {
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.guest-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.guest-form input,
+.guest-form textarea {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 12px;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+.guest-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.guest-form button {
+    background: white;
+    color: #111;
+    border: none;
+    padding: 12px;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.guest-form button:hover {
+    background: #ccc;
+}
+
+#messages {
+    margin-top: 50px;
+}
+
+.message-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.message-card h3 {
+    margin-bottom: 8px;
+    color: white;
+}
+
+.message-card p {
+    color: #ccc;
+    margin-bottom: 10px;
+    overflow-wrap: anywhere;
+}
+
+.message-card small {
+    color: #777;
+    font-size: 12px;
+}
