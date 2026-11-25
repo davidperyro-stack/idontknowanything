@@ -74,13 +74,11 @@ export default async function handler(req, res) {
                 }
             );
 
-            const result = await response.json();
-
             if (!response.ok) {
-                return res.status(response.status).json({
-                    error: "Could not submit your message.",
-                });
-            }
+    return res.status(response.status).json({
+        error: result.message || "Unknown Supabase error.",
+    });
+}
 
             return res.status(201).json(result);
 
