@@ -80,6 +80,8 @@ export default async function handler(req, res) {
                 });
             }
 
+            console.error(response.status, JSON.stringify(result));
+
             return res.status(201).json(result);
 
         } catch (error) {
